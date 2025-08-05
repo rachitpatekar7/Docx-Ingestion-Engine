@@ -1,0 +1,16 @@
+Flask==2.3.3
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.4.2
+opencv-python==4.10.0.84
+requests==2.31.0
+sqlalchemy==2.0.23
+tensorflow==2.19.0
+pytesseract==0.3.10
+gunicorn==21.2.0
+dash==2.16.1
+plotly==5.17.0
+PyPDF2==3.0.1
+pdf2image==1.16.3
+dash-bootstrap-components==1.5.0
+pillow==10.0.1

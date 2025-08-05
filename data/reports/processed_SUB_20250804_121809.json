@@ -1,0 +1,27 @@
+{
+  "submission_id": "SUB_20250804_121809",
+  "processing_id": "2025-08-04T12:11:42.003351",
+  "document_type": "insurance_policy",
+  "extracted_data": {
+    "policy_number": "POL-2024-002",
+    "policyholder": "Jane Smith\nCoverage",
+    "coverage_type": "Auto Insurance\nPremium",
+    "premium": "500",
+    "deductible": "00"
+  },
+  "scorecard_data": {
+    "high_premium": false,
+    "low_deductible": true,
+    "new_policy": true,
+    "calculated_premium": 500.0,
+    "calculated_deductible": 0.0
+  },
+  "appetite_data": {
+    "decision": "decline",
+    "reason": "Premium: $500.0, Deductible: $0.0, Risk Score: 0.30",
+    "risk_score": 0.30000000000000004
+  },
+  "timestamp": "2025-08-04T12:21:47.640342",
+  "source": "matching_rule_engine",
+  "status": "pending"
+}

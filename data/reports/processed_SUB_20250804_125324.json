@@ -1,0 +1,27 @@
+{
+  "submission_id": "SUB_20250804_125324",
+  "processing_id": "2025-08-04T12:53:23.020092",
+  "document_type": "insurance_policy",
+  "extracted_data": {
+    "policy_number": "POL-2024-011",
+    "policyholder": "Jessica Martinez\nCoverage",
+    "coverage_type": "Auto Insurance\nPremium",
+    "premium": "1350",
+    "deductible": "500"
+  },
+  "scorecard_data": {
+    "high_premium": true,
+    "low_deductible": false,
+    "new_policy": true,
+    "calculated_premium": 1350.0,
+    "calculated_deductible": 500.0
+  },
+  "appetite_data": {
+    "decision": "review",
+    "reason": "Premium: $1350.0, Deductible: $500.0, Risk Score: 0.40",
+    "risk_score": 0.4
+  },
+  "timestamp": "2025-08-04T12:53:25.029808",
+  "source": "matching_rule_engine",
+  "status": "pending"
+}

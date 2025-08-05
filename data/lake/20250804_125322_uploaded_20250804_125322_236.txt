@@ -1,0 +1,16 @@
+INSURANCE POLICY DOCUMENT
+
+Policy Number: POL-2024-011
+Policyholder: Jessica Martinez
+Coverage: Auto Insurance
+Premium: $1350/year
+Deductible: $500
+Vehicle: 2022 Toyota Camry
+VIN: 1HGBH41JXMN109186
+Coverage Limits: $100,000/$300,000
+Collision Coverage: Yes
+Comprehensive Coverage: Yes
+Effective Date: 2024-08-04
+Expiration Date: 2025-08-04
+Agent: John Smith
+Phone: (555) 123-4567
