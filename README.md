@@ -28,6 +28,8 @@ The project is organized into several directories and files, each serving a spec
   - **matching_rule_engine.py**: Matches rules against data.
   - **report_builder.py**: Builds reports based on data.
   - **notification_engine.py**: Handles notifications.
+  - **run_email_listener.py**: Launches email listener.\
+  - **drive_uploader.py**: Uploads emails and attachments to Google Drive as data lake.
 - **ui/**: User interface components:
   - **dashboard.py**: Visualizes data and results.
   - **chatbot.py**: User interaction interface.
@@ -62,6 +64,15 @@ The project is organized into several directories and files, each serving a spec
    pip install -r requirements.txt
    ```
 4. Configure environment variables in the `.env` file.
+
+5. The run_email_listener.py script runs independently and is used to listen for new emails related to insurance data ingestion.
+
+Prerequisites:
+Before running, ensure you have set your email address and an app-specific password as environment variables: EMAIL and APP_PASSWORD.
+
+To run the email listener, use:
+
+python engines/run_email_listener.py
 
 ## Usage Guidelines
 - Ensure that the necessary data is placed in the appropriate directories under `data/`.
