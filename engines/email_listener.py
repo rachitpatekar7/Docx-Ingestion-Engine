@@ -15,11 +15,11 @@ class EmailListener:
         self.seen_uids = set()
 
     def connect(self):
-        print("🔌 Connecting to Gmail via IMAP...")
+        print("[CONNECT] Connecting to Gmail via IMAP...")
         self.imap = imaplib.IMAP4_SSL("imap.gmail.com")
         self.imap.login(self.email_address, self.app_password)
         self.imap.select("inbox")
-        print("✅ Connected.")
+        print("[SUCCESS] Connected.")
 
     def is_insurance_email(self, msg):
         subject = msg["Subject"]
@@ -83,7 +83,7 @@ class EmailListener:
                 with open(filepath, "wb") as f:
                     f.write(part.get_payload(decode=True))
 
-                print(f"📎 Saved attachment: {filename}")
+                print(f"[ATTACH] Saved attachment: {filename}")
                 attachment_found = True
 
         return attachment_dir if attachment_found else None
@@ -93,7 +93,7 @@ class EmailListener:
         status, messages = self.imap.uid("search", None, f'(UNSEEN SINCE {date_since})')
 
         if status != "OK":
-            print("⚠️ Failed to fetch messages.")
+            print("[WARNING] Failed to fetch messages.")
             return
 
         for uid in messages[0].split():
@@ -112,7 +112,7 @@ class EmailListener:
             from_ = msg.get("From")
             date_ = msg.get("Date")
 
-            print("\n📬 Insurance Email received:")
+            print("\n[EMAIL] Insurance Email received:")
             print(f"From: {from_}")
             print(f"To: {to}")
             print(f"Cc: {cc}")
@@ -125,10 +125,10 @@ class EmailListener:
 
     def listen(self, interval=60):
         try:
-            print("🔁 Listening for insurance emails every", interval, "seconds...")
+            print("Listening for insurance emails every", interval, "seconds...")
             while True:
                 self.check_inbox()
                 time.sleep(interval)
         except KeyboardInterrupt:
-            print("🛑 Stopped listening.")
+            print("[STOP] Stopped listening.")
             self.imap.logout()

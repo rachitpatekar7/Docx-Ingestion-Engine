@@ -324,174 +324,241 @@ class ModernInsuranceAIDashboard:
                 
                 # Start processing button clicked
                 if trigger_id == 'start-processing-btn' and start_clicks and start_clicks > 0:
-                    if email and password:
-                        if self.email_listener_process is None or self.email_listener_process.poll() is not None:
-                            try:
-                                # Reset state
-                                self.processing_logs.clear()
-                                self.processed_emails.clear()
-                                self.last_log_position = 0
-                                self.current_progress = 0
-                                self.current_status = "Starting email listener..."
-                                self.processing_step = "Initializing"
-                                
-                                # Create new log file
-                                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                                self.log_file_path = f"logs/email_listener_{timestamp}.log"
-                                os.makedirs("logs", exist_ok=True)
-                                
-                                # Add initial log entries
-                                self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Starting email listener...")
-                                self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Email: {email}")
-                                self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Connecting to Gmail...")
-                                
-                                # Find Python executable
-                                python_cmd = None
-                                for cmd in ['python', 'py', 'python3']:
-                                    try:
-                                        result = subprocess.run([cmd, '--version'], 
-                                                              capture_output=True, 
-                                                              text=True, 
-                                                              shell=True)
-                                        if result.returncode == 0:
-                                            python_cmd = cmd
-                                            self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Found Python: {cmd}")
-                                            break
-                                    except:
-                                        continue
-                                
-                                if not python_cmd:
-                                    raise Exception("No Python executable found")
-                                
-                                # Start the email listener process
-                                cmd_args = [python_cmd, 'engines\\run_email_listener.py', email, password]
-                                self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Starting: {' '.join(cmd_args)}")
-                                
-                                # For Windows, redirect output directly to file using shell redirection
-                                cmd_string = f'"{python_cmd}" engines\\run_email_listener.py {email} "{password}" > "{self.log_file_path}" 2>&1'
-                                self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Command: {cmd_string}")
-                                
-                                # Start process with shell redirection
-                                self.email_listener_process = subprocess.Popen(
-                                    cmd_string,
-                                    shell=True,
-                                    cwd=os.path.abspath('.')
-                                )
-                                
-                                # Update state
-                                start_disabled = True
-                                stop_disabled = False
-                                status_text = "Processing Active"
-                                status_color = "success"
-                                
-                                self.current_progress = 15
-                                self.current_status = "Email listener started successfully!"
-                                self.processing_step = "Monitoring Inbox"
-                                self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Email listener started successfully!")
-                                
-                            except Exception as e:
-                                self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] ERROR: {str(e)}")
-                                start_disabled = False
-                                stop_disabled = True
-                                status_text = "Error"
-                                status_color = "danger"
-                        else:
-                            self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Email listener already running")
-                    else:
-                        self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Please enter both email and password")
-                        start_disabled = False
-                        stop_disabled = True
-                        status_text = "Missing Credentials"
-                        status_color = "warning"
+                    # Start the log file reading simulation
+                    self._start_log_simulation()
+                    start_disabled = True
+                    stop_disabled = False
+                    status_text = "Processing Active"
+                    status_color = "success"
                 
                 # Stop processing button clicked
                 elif trigger_id == 'stop-processing-btn' and stop_clicks and stop_clicks > 0:
-                    if self.email_listener_process and self.email_listener_process.poll() is None:
-                        try:
-                            self.email_listener_process.terminate()
-                            self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Email listener stopped")
-                            start_disabled = False
-                            stop_disabled = True
-                            status_text = "Stopped"
-                            status_color = "danger"
-                        except Exception as e:
-                            self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Error stopping: {str(e)}")
+                    self._stop_simulation()
+                    start_disabled = False
+                    stop_disabled = True
+                    status_text = "Stopped"
+                    status_color = "danger"
             
-            # Check if process is still running and read output from log file (interval update)
-            if self.email_listener_process and self.email_listener_process.poll() is None:
+            # Update display based on simulation state
+            if hasattr(self, 'simulation_active') and self.simulation_active:
                 start_disabled = True
                 stop_disabled = False
                 status_text = "Processing Active"
                 status_color = "success"
-                
-                # Read new output from log file
-                if self.log_file_path and os.path.exists(self.log_file_path):
-                    try:
-                        with open(self.log_file_path, 'r', encoding='utf-8') as log_file:
-                            # Seek to last read position
-                            log_file.seek(self.last_log_position)
-                            new_lines = log_file.readlines()
-                            
-                            # Update position for next read
-                            self.last_log_position = log_file.tell()
-                            
-                            for line in new_lines:
-                                line = line.strip()
-                                if line:
-                                    # Add original line directly to logs
-                                    if line.startswith('['):
-                                        self.processing_logs.append(line)
-                                    else:
-                                        self.processing_logs.append(f"[LOG] {line}")
-                                    
-                                    # Process line for progress tracking
-                                    self._process_log_line(line)
-                    except Exception as e:
-                        self.processing_logs.append(f"[{datetime.now().strftime('%H:%M:%S')}] Error reading log: {str(e)}")
-            elif self.email_listener_process and self.email_listener_process.poll() is not None:
-                # Process has stopped
+                self._update_simulation()
+            elif hasattr(self, 'simulation_complete') and self.simulation_complete:
                 start_disabled = False
                 stop_disabled = True
-                status_text = "Stopped"
-                status_color = "danger"
+                status_text = "Complete"
+                status_color = "success"
             
             # Build status and results content
             status_content = self._build_status_content()
             results_content = self._build_results_content()
             
             return start_disabled, stop_disabled, status_text, status_color, status_content, results_content
+        
+    def _start_log_simulation(self):
+        """Start the email listener in background - simple approach"""
+        # Reset state
+        self.processing_logs.clear()
+        self.processed_emails.clear()
+        self.current_progress = 0
+        self.current_status = "Starting email listener..."
+        self.processing_step = "Launching Email Listener"
+        
+        # Initialize simulation state
+        self.simulation_active = True
+        self.simulation_complete = False
+        self.simulation_lines = []
+        self.simulation_index = 0
+        self.drive_link_found = None
+        
+        # Record start time to identify new log files
+        self.start_time = datetime.now()
+        
+        try:
+            # Start email listener - let it output to CLI as normal
+            self.email_process = subprocess.Popen([
+                sys.executable, "engines/run_email_listener.py"
+            ], shell=True, cwd=os.path.dirname(os.path.dirname(__file__)))
+            
+            self.current_status = "Email listener started! Check terminal for output..."
+            self.processing_step = "Email Listener Active"
+            
+        except Exception as e:
+            self.current_status = f"Error starting email listener: {str(e)}"
+            self.processing_step = "Error"
+            self.simulation_active = False
+    
+    def _update_simulation(self):
+        """Update the simulation - monitor for new log files and display them step by step"""
+        if not hasattr(self, 'simulation_active') or not self.simulation_active:
+            return
+        
+        # Look for log files created after we started
+        if os.path.exists("logs"):
+            log_files = []
+            for f in os.listdir("logs"):
+                if f.startswith("email_listener_") and f.endswith(".log"):
+                    file_path = os.path.join("logs", f)
+                    file_time = datetime.fromtimestamp(os.path.getmtime(file_path))
+                    
+                    # Only consider log files created after we started
+                    if file_time > self.start_time:
+                        log_files.append((file_time, file_path))
+            
+            # If we found a new log file, start displaying it
+            if log_files and not hasattr(self, 'current_log_file'):
+                # Get the most recent log file
+                log_files.sort(key=lambda x: x[0], reverse=True)
+                self.current_log_file = log_files[0][1]
+                self.current_status = "New log file detected! Reading content..."
+                
+                # Read all lines from the log file
+                try:
+                    with open(self.current_log_file, 'r', encoding='utf-8') as f:
+                        self.simulation_lines = [line.strip() for line in f.readlines() if line.strip()]
+                    
+                    self.simulation_index = 0
+                    self.current_status = "Displaying log content step by step..."
+                    
+                except Exception as e:
+                    self.current_status = f"Error reading log file: {str(e)}"
+                    return
+            
+            # If we have a log file and lines to show, display them step by step
+            elif hasattr(self, 'current_log_file') and hasattr(self, 'simulation_lines'):
+                # Show one more line every update
+                if self.simulation_index < len(self.simulation_lines):
+                    self.simulation_index += 1
+                    
+                    # Calculate progress
+                    if len(self.simulation_lines) > 0:
+                        self.current_progress = int((self.simulation_index / len(self.simulation_lines)) * 100)
+                    
+                    # Update status based on current line
+                    if self.simulation_index > 0:
+                        current_line = self.simulation_lines[self.simulation_index - 1]
+                        
+                        if "[CONNECT]" in current_line:
+                            self.current_status = "Connecting to Gmail..."
+                        elif "[SUCCESS]" in current_line and "Connected" in current_line:
+                            self.current_status = "Successfully connected to Gmail"
+                        elif "[EMAIL]" in current_line:
+                            self.current_status = "Insurance email received! Processing..."
+                        elif "[ATTACH]" in current_line:
+                            self.current_status = "Saving PDF attachment..."
+                        elif "[FOLDER]" in current_line:
+                            self.current_status = "Creating Google Drive folder..."
+                        elif "[DRIVE_LINK]" in current_line:
+                            # Extract drive link
+                            if "https://" in current_line:
+                                link_part = current_line.split("https://", 1)[1].strip()
+                                self.drive_link_found = "https://" + link_part
+                            self.current_status = "Google Drive folder created!"
+                        elif "[UPLOAD]" in current_line:
+                            self.current_status = "Uploading files to Google Drive..."
+                
+                # Check if we're done displaying all lines
+                if self.simulation_index >= len(self.simulation_lines):
+                    self.simulation_complete = True
+                    self.current_progress = 100
+                    if self.drive_link_found:
+                        self.current_status = "Processing complete! Google Drive link available."
+                    else:
+                        self.current_status = "Processing complete!"
+        
+        else:
+            # Logs directory doesn't exist yet
+            self.current_status = "Email listener starting... waiting for logs directory..."
+    
+    def _stop_simulation(self):
+        """Stop the simulation"""
+        self.simulation_active = False
+        self.current_status = "Processing stopped by user"
+        self.processing_step = "Stopped"
     
     def _build_status_content(self):
         """Build the process status display with progress tracking"""
-        if not self.processing_logs:
-            return dbc.Alert([
-                html.I(className="bi bi-info-circle me-2"),
-                "No activity yet. Click 'Start Processing' to begin monitoring for insurance emails."
-            ], color="info")
-        
-        # Current status with progress bar
         status_content = []
         
-        # Progress bar
-        if hasattr(self, 'current_progress') and self.current_progress > 0:
-            progress_color = "success" if self.current_progress == 100 else "info"
+        # Show current status and progress
+        if hasattr(self, 'current_status') and self.current_status:
+            if hasattr(self, 'current_progress') and self.current_progress > 0:
+                progress_color = "success" if self.current_progress == 100 else "info"
+                status_content.append(
+                    html.Div([
+                        html.H6(f"Current Step: {getattr(self, 'processing_step', 'Processing')}", className="mb-2"),
+                        dbc.Progress(
+                            value=self.current_progress,
+                            color=progress_color,
+                            striped=self.current_progress < 100,
+                            animated=self.current_progress < 100,
+                            className="mb-3",
+                            style={"height": "25px"}
+                        ),
+                        html.P(self.current_status, className="text-muted mb-3")
+                    ])
+                )
+            else:
+                status_content.append(
+                    html.Div([
+                        html.H6("Status:", className="mb-2"),
+                        html.P(self.current_status, className="text-muted mb-3")
+                    ])
+                )
+        
+        # Display log file content step by step
+        if hasattr(self, 'simulation_lines') and self.simulation_lines:
+            log_items = []
+            # Show lines progressively based on simulation_index
+            lines_to_show = getattr(self, 'simulation_index', 0)
+            
+            for i, line in enumerate(self.simulation_lines[:lines_to_show]):
+                # Color coding for different log types
+                if "ERROR" in line.upper():
+                    color = "danger"
+                elif any(tag in line.upper() for tag in ["[EMAIL]", "[ATTACH]", "[FOLDER]", "[DRIVE_LINK]", "[UPLOAD]"]):
+                    color = "success"
+                elif any(tag in line.upper() for tag in ["[INFO]", "[CONNECT]", "[SUCCESS]"]):
+                    color = "info"
+                elif "WARNING" in line.upper():
+                    color = "warning"
+                else:
+                    color = "light"
+                
+                log_items.append(
+                    dbc.Alert(
+                        line, 
+                        color=color, 
+                        className="p-2 mb-1 small",
+                        style={"fontSize": "12px", "lineHeight": "1.2"}
+                    )
+                )
+            
             status_content.append(
                 html.Div([
-                    html.H6(f"Current Step: {getattr(self, 'processing_step', 'Processing')}", className="mb-2"),
-                    dbc.Progress(
-                        value=self.current_progress,
-                        color=progress_color,
-                        striped=self.current_progress < 100,
-                        animated=self.current_progress < 100,
-                        className="mb-3",
-                        style={"height": "25px"}
-                    ),
-                    html.P(getattr(self, 'current_status', 'Processing...'), className="text-muted mb-3")
+                    html.H6(f"Email Listener Output ({lines_to_show}/{len(self.simulation_lines)} lines):", className="mb-2"),
+                    html.Div(
+                        log_items, 
+                        style={
+                            "maxHeight": "400px", 
+                            "overflowY": "auto", 
+                            "overflowX": "hidden",
+                            "border": "2px solid #dee2e6", 
+                            "borderRadius": "8px", 
+                            "padding": "10px",
+                            "backgroundColor": "#f8f9fa",
+                            "scrollBehavior": "smooth"
+                        },
+                        id="log-container"
+                    )
                 ])
             )
         
-        # Display all log lines with better styling and scrolling
-        if self.processing_logs:
+        # Display traditional processing logs if available
+        elif self.processing_logs:
             log_items = []
             for i, log in enumerate(self.processing_logs):
                 # Color coding for different log types
@@ -538,7 +605,7 @@ class ModernInsuranceAIDashboard:
             status_content.append(
                 dbc.Alert([
                     html.I(className="bi bi-info-circle me-2"),
-                    "No logs available yet. Start processing to see activity."
+                    "No activity yet. Click 'Start Processing' to begin monitoring for insurance emails."
                 ], color="info")
             )
         
@@ -546,88 +613,90 @@ class ModernInsuranceAIDashboard:
     
     def _build_results_content(self):
         """Build the results display with progress tracking for each email"""
-        if not self.processed_emails:
-            return dbc.Alert([
-                html.I(className="bi bi-inbox me-2"),
-                "No emails processed yet. The system will automatically process insurance-related emails with PDF attachments."
-            ], color="info")
+        results = []
         
-        # Create results with progress tracking
-        results_data = []
-        for email in self.processed_emails:
-            drive_link = email.get("drive_link")
-            folder_name = email.get("folder_name", "Processing...")
-            progress = email.get("progress", 0)
-            status = email.get("status", "Processing")
-            
-            # Progress bar for this email
-            progress_color = "success" if progress == 100 else "info"
-            progress_bar = dbc.Progress(
-                value=progress,
-                color=progress_color,
-                striped=progress < 100,
-                animated=progress < 100,
-                className="mb-2",
-                style={"height": "20px"}
+        # Show drive link prominently if found
+        if hasattr(self, 'drive_link_found') and self.drive_link_found:
+            results.append(
+                dbc.Alert([
+                    html.H4([
+                        html.I(className="bi bi-google me-2"),
+                        "Google Drive Link Found!"
+                    ], className="mb-3"),
+                    html.P("The email processing is complete. Click the link below to access the Google Drive folder:", className="mb-3"),
+                    html.A([
+                        html.I(className="bi bi-box-arrow-up-right me-2"),
+                        "Open Google Drive Folder"
+                    ], href=self.drive_link_found, target="_blank", className="btn btn-success btn-lg")
+                ], color="success", className="mb-4")
             )
-            
-            # Drive link button or status
-            if drive_link and drive_link.startswith("https://") and progress == 100:
-                link_display = html.A([
-                    html.I(className="bi bi-google me-1"),
-                    "Open Google Drive Folder"
-                ], href=drive_link, target="_blank", className="btn btn-success btn-sm")
-            elif progress == 100:
-                link_display = dbc.Badge("Complete", color="success")
-            else:
-                link_display = dbc.Spinner(html.Small("Processing..."), size="sm", color="primary")
-            
-            # Get uploaded files info
-            uploaded_files = email.get("uploaded_files", [])
-            attachment_name = email.get("attachment_name", "Unknown attachment")
-            
-            # Create uploaded files display
-            uploaded_files_display = []
-            if uploaded_files:
-                for file_info in uploaded_files:
-                    file_badge = dbc.Badge([
-                        html.I(className="bi bi-file-earmark me-1"),
-                        file_info["name"]
-                    ], color="light", className="me-1 mb-1")
-                    uploaded_files_display.append(file_badge)
-            
-            # Email processing card
-            results_data.append(
-                dbc.Card([
-                    dbc.CardBody([
-                        dbc.Row([
-                            dbc.Col([
-                                html.H6(f"📧 {folder_name}", className="mb-1"),
-                                html.Small(f"Started: {email['timestamp']}", className="text-muted"),
-                                html.Br(),
-                                html.Small(f"Status: {status}", className=f"text-{'success' if progress == 100 else 'info'}"),
-                                progress_bar,
-                                html.Div(f"{progress}% Complete", className="small text-muted mb-2"),
-                                # Show uploaded files if available
-                                html.Div([
-                                    html.Small("Files uploaded:", className="text-muted") if uploaded_files else "",
-                                    html.Div(uploaded_files_display) if uploaded_files else ""
-                                ]) if uploaded_files else html.Div([
-                                    html.Small(f"Attachment: {attachment_name}", className="text-muted") if attachment_name != "Unknown attachment" else ""
-                                ])
-                            ], md=8),
-                            dbc.Col([
-                                html.Div(link_display, className="d-flex justify-content-end align-items-center h-100")
-                            ], md=4)
+        
+        # Show processing status
+        if self.processed_emails:
+            for email in self.processed_emails:
+                drive_link = email.get("drive_link")
+                folder_name = email.get("folder_name", "Processing...")
+                progress = email.get("progress", 0)
+                status = email.get("status", "Processing")
+                
+                # Progress bar for this email
+                progress_color = "success" if progress == 100 else "info"
+                progress_bar = dbc.Progress(
+                    value=progress,
+                    color=progress_color,
+                    striped=progress < 100,
+                    animated=progress < 100,
+                    className="mb-2",
+                    style={"height": "20px"}
+                )
+                
+                # Get uploaded files info
+                uploaded_files = email.get("uploaded_files", [])
+                attachment_name = email.get("attachment_name", "Unknown attachment")
+                
+                # Create uploaded files display
+                uploaded_files_display = []
+                if uploaded_files:
+                    for file_info in uploaded_files:
+                        file_badge = dbc.Badge([
+                            html.I(className="bi bi-file-earmark me-1"),
+                            file_info["name"]
+                        ], color="light", className="me-1 mb-1")
+                        uploaded_files_display.append(file_badge)
+                
+                # Email processing card
+                results.append(
+                    dbc.Card([
+                        dbc.CardBody([
+                            dbc.Row([
+                                dbc.Col([
+                                    html.H6(f"📧 {folder_name}", className="mb-1"),
+                                    html.Small(f"Started: {email['timestamp']}", className="text-muted"),
+                                    html.Br(),
+                                    html.Small(f"Status: {status}", className=f"text-{'success' if progress == 100 else 'info'}"),
+                                    progress_bar,
+                                    html.Div(f"{progress}% Complete", className="small text-muted mb-2"),
+                                    # Show uploaded files if available
+                                    html.Div([
+                                        html.Small("Files uploaded:", className="text-muted") if uploaded_files else "",
+                                        html.Div(uploaded_files_display) if uploaded_files else ""
+                                    ]) if uploaded_files else html.Div([
+                                        html.Small(f"Attachment: {attachment_name}", className="text-muted") if attachment_name != "Unknown attachment" else ""
+                                    ])
+                                ], md=12)
+                            ])
                         ])
-                    ])
-                ], className="mb-3", style={"border": f"2px solid {'#28a745' if progress == 100 else '#17a2b8'}"})
+                    ], className="mb-3", style={"border": f"2px solid {'#28a745' if progress == 100 else '#17a2b8'}"})
+                )
+        elif not hasattr(self, 'simulation_active') or not self.simulation_active:
+            results.append(
+                dbc.Alert([
+                    html.I(className="bi bi-inbox me-2"),
+                    "Click 'Start Processing' to read and display the log file step by step."
+                ], color="info")
             )
         
-        return html.Div([
-            html.H6(f"📊 Processing Results ({len(self.processed_emails)} emails):", className="mb-3"),
-            html.Div(results_data)
-        ])
+        return html.Div(results)
     
     def run(self, debug=True, host='0.0.0.0', port=8050):
         """Run the dashboard"""
