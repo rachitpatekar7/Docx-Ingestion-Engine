@@ -35,7 +35,9 @@ def create_drive_folder(service, folder_name):
         'mimeType': 'application/vnd.google-apps.folder'
     }
     folder = service.files().create(body=file_metadata, fields='id').execute()
-    return folder.get('id')
+    folder_id = folder.get('id')
+    print(f"[FOLDER] Created folder: {folder_name} (ID: {folder_id})")
+    return folder_id
 
 def upload_file(service, filepath, filename, folder_id=None):
     file_metadata = {'name': filename}
@@ -48,7 +50,7 @@ def upload_file(service, filepath, filename, folder_id=None):
         media_body=media,
         fields='id'
     ).execute()
-    print(f"✅ Uploaded: {filename} (ID: {file.get('id')})")
+    print(f"[UPLOAD] Uploaded: {filename} (ID: {file.get('id')})")
 
 def save_email_and_attachments(to, cc, subject, body, attachments_dir):
     service = authenticate_drive()
@@ -56,7 +58,8 @@ def save_email_and_attachments(to, cc, subject, body, attachments_dir):
     # Create a unique folder per email
     folder_name = f"Email_{uuid.uuid4().hex[:8]}"
     folder_id = create_drive_folder(service, folder_name)
-    print(f"📁 Created folder: {folder_name}")
+    print(f"[FOLDER] Created folder: {folder_name} (ID: {folder_id})")
+    print(f"[DRIVE_LINK] https://drive.google.com/drive/folders/{folder_id}")
 
     # Step 1: Save email metadata to a .txt file
     metadata_text = f"""To: {to}
@@ -82,4 +85,4 @@ Body:
             if os.path.isfile(full_path):
                 upload_file(service, full_path, filename, folder_id)
     else:
-        print(f"⚠️ Attachments directory not found: {attachments_dir}")
+        print(f"[WARNING] Attachments directory not found: {attachments_dir}")

@@ -1,0 +1,2941 @@
+2025-08-09 11:59:07,094 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-09 12:01:36,357 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-09 12:05:17,392 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-09 12:05:19,591 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-09 12:05:46,894 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-09 12:05:49,184 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-09 12:11:10,814 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-09 12:11:13,464 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-09 12:11:15,163 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-09 12:11:16,234 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-09 12:11:16,235 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-09 12:11:16,237 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-09 12:11:16,238 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-09 12:11:16,240 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-09 12:11:16,241 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-09 12:11:16,241 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-09 12:11:16,242 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-09 12:11:16,243 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-09 12:11:16,246 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-09 12:11:16,248 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-09 12:11:16,249 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-09 12:11:16,253 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-09 12:11:16,253 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-09 12:11:16,254 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-09 12:11:16,928 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-09 12:11:16,929 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-09 12:11:39,948 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-09 12:11:39,949 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-09 12:11:39,949 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-09 12:11:39,956 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-09 12:11:39,957 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-09 12:11:39,957 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-09 12:11:39,958 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-09 12:11:41,145 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted data in the expected JSON format:
+
+{
+    "Invoice no.": "1001329",
+    "Description": "Office Chair",
+    "Quantity": "2",
+    "Date": "5/4/2023",
+    "Unit price": "1100.00",
+    "Amount": "2200.00",
+    "Total": "2200.00",
+    "Email": "Santoshvarma0988@gmail.com",
+    "Phone number": "9999999999",
+    "Address": "Mumbai, India"
+}
+
+Note that I removed the currency symbols, kept only numbers and decimal points for numeric values, and used double quotes for JSON keys and values. I also used 'N/A' for fields that were not found.
+2025-08-09 12:11:41,147 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-09 12:11:41,148 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-09 12:11:41,149 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-09 12:11:41,149 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-09 12:11:41,150 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-09 12:11:41,152 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-09 12:11:41,152 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-09 12:11:41,153 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-09 12:11:41,717 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250809_121141
+2025-08-09 12:11:43,215 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/10FLXPrmq0aK3NLynuHF_W1CJpzrKZNna
+2025-08-09 12:15:47,755 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-09 12:15:56,888 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-09 12:15:58,881 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-09 12:16:40,414 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-09 12:16:42,304 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-09 12:16:46,119 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-09 12:16:46,120 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-09 12:16:46,123 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-09 12:16:46,123 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-09 12:16:46,126 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-09 12:16:46,127 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-09 12:16:46,127 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-09 12:16:46,128 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-09 12:16:46,128 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-09 12:16:46,129 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-09 12:16:46,130 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-09 12:16:46,131 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-09 12:16:46,132 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-09 12:16:46,132 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-09 12:16:46,133 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-09 12:16:47,223 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-09 12:16:47,223 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-09 12:17:09,521 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-09 12:17:09,521 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-09 12:17:09,521 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-09 12:17:09,531 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-09 12:17:09,532 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-09 12:17:09,532 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-09 12:17:09,532 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-09 12:17:11,003 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted data in the expected JSON format:
+
+{
+  "Invoice no.": "1001329",
+  "Description": "Office Chair",
+  "Quantity": "2",
+  "Date": "5/4/2023",
+  "Unit price": "1100.00",
+  "Amount": "2200.00",
+  "Total": "2200.00",
+  "Email": "Santoshvarma0988@gmail.com",
+  "Phone number": "9999999999",
+  "Address": "Mumbai, India"
+}
+
+Note that I removed the currency symbols, kept only numbers and decimal points for numeric values, and used double quotes for JSON keys and values. I also used 'N/A' for fields that were not found.
+2025-08-09 12:17:11,004 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-09 12:17:11,004 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-09 12:17:11,005 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-09 12:17:11,005 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-09 12:17:11,005 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-09 12:17:11,007 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-09 12:17:11,007 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-09 12:17:11,008 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-09 12:17:11,017 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250809_121711
+2025-08-09 12:17:12,513 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/124TVgO1YUkCccKwX_Kwlt41AhRNV6LPR
+2025-08-09 12:17:21,815 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-09 12:17:57,011 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:24:29,713 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:24:45,560 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-11 09:24:47,560 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-11 09:24:51,729 - invoice_extraction_bot - INFO - Reset seen emails cache
+2025-08-11 09:24:52,065 - invoice_extraction_bot - INFO - Found 29 emails since 08-Aug-2025
+2025-08-11 09:24:52,714 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:24:52,715 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:24:52,719 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:24:52,719 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:24:52,730 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:24:52,730 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:24:52,731 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:24:52,731 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:24:52,734 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:24:52,734 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:24:52,738 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:24:52,739 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:24:52,770 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:24:52,771 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:24:52,771 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:24:52,772 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:24:52,772 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:24:52,772 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:24:52,772 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:24:54,377 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:24:54,377 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:24:54,378 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:24:54,378 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:24:54,379 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:24:54,379 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:24:54,382 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:24:54,383 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:24:54,383 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:24:54,903 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092454
+2025-08-11 09:24:56,275 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1Lzo1QG1ujjRaQycB13OEuMQ4YAX1zX_s
+2025-08-11 09:25:04,565 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:25:04,566 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:25:04,570 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:25:04,571 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:25:04,573 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:25:04,574 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:04,574 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:25:04,574 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:25:04,575 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:25:04,575 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:25:04,579 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:25:04,580 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:25:04,602 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:25:04,603 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:25:04,603 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:25:04,603 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:04,604 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:25:04,604 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:25:04,604 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:25:05,687 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+* If a field is not found, I've used 'N/A'
+* Removed currency symbols
+* Kept only numbers and decimal points for numeric values
+* Returned only valid JSON format
+* Used double quotes for JSON keys and values
+2025-08-11 09:25:05,688 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:25:05,688 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:25:05,689 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:25:05,689 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:05,690 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:25:05,692 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:05,692 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:25:05,692 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:25:05,699 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092505
+2025-08-11 09:25:07,023 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/106XhteybxoKA8ZO44kH-YYcIBkNrum_x
+2025-08-11 09:25:17,330 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:25:17,331 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:25:17,334 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:25:17,334 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:25:17,336 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:25:17,336 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:17,337 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:25:17,337 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:25:17,338 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:25:17,338 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:25:17,341 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:25:17,342 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:25:17,360 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:25:17,361 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:25:17,361 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:25:17,361 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:17,361 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:25:17,361 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:25:17,362 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:25:18,171 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:25:18,172 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:25:18,172 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:25:18,173 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:25:18,173 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:18,174 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:25:18,175 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:18,175 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:25:18,175 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:25:18,182 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092518
+2025-08-11 09:25:19,880 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1gO92FKNYGzf5vI2cAIY_mP26kLQ4pQWu
+2025-08-11 09:25:27,800 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:25:27,801 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:25:27,805 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:25:27,808 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:25:27,811 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:25:27,812 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:27,812 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:25:27,814 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:25:27,815 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:25:27,815 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:25:27,819 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:25:27,819 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:25:27,843 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:25:27,844 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:25:27,845 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:25:27,845 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:27,845 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:25:27,845 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:25:27,846 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:25:28,779 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:25:28,779 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:25:28,780 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:25:28,780 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:25:28,781 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:28,781 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:25:28,782 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:28,783 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:25:28,783 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:25:28,789 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092528
+2025-08-11 09:25:30,361 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1jLdlaMvUk86zkPA6yeRTaW6SM2VQiACI
+2025-08-11 09:25:38,038 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:25:38,038 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:25:38,042 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:25:38,042 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:25:38,044 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:25:38,044 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:38,045 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:25:38,045 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:25:38,046 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:25:38,046 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:25:38,049 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:25:38,049 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:25:38,071 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:25:38,072 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:25:38,072 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:25:38,072 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:38,073 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:25:38,073 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:25:38,073 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:25:38,969 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:25:38,969 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:25:38,970 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:25:38,970 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:25:38,970 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:38,970 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:25:38,973 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:38,973 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:25:38,973 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:25:38,979 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092538
+2025-08-11 09:25:40,315 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1mT5FxHOAtjEpxy_jISPmimQarXEmvDMC
+2025-08-11 09:25:47,355 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:25:47,356 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:25:47,360 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:25:47,361 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:25:47,363 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:25:47,364 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:47,364 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:25:47,365 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:25:47,366 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:25:47,366 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:25:47,370 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:25:47,370 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:25:47,396 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:25:47,397 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:25:47,398 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:25:47,398 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:47,398 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:25:47,398 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:25:47,399 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:25:48,082 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've used 'N/A' for fields that were not found or not applicable, and removed currency symbols and formatted numeric values as per the rules.
+2025-08-11 09:25:48,082 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:25:48,083 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:25:48,083 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:25:48,083 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:48,083 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:25:48,085 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:48,086 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:25:48,086 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:25:48,096 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092548
+2025-08-11 09:25:49,420 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1kLzzdYsb0h1VhZNRCFfMO5j-tTfrilVb
+2025-08-11 09:25:57,666 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:25:57,667 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:25:57,670 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:25:57,671 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:25:57,673 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:25:57,673 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:57,673 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:25:57,674 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:25:57,674 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:25:57,675 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:25:57,677 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:25:57,677 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:25:57,698 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:25:57,699 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:25:57,700 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:25:57,700 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:25:57,700 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:25:57,701 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:25:57,701 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:25:58,938 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:25:58,938 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:25:58,939 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:25:58,939 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:25:58,940 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:58,940 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:25:58,942 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:25:58,942 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:25:58,942 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:25:58,950 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092558
+2025-08-11 09:26:00,273 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1fFbe_0F_hVsrVuJvdZ-KkFAennAL2D7x
+2025-08-11 09:26:10,327 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:26:10,328 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:26:10,330 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:26:10,331 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:26:10,332 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:26:10,332 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:10,333 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:26:10,333 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:26:10,334 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:26:10,334 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:26:10,336 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:26:10,336 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:26:10,360 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:26:10,360 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:26:10,360 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:26:10,360 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:10,361 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:26:10,361 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:26:10,361 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:26:11,430 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON object.
+5. I've used double quotes for JSON keys and values.
+2025-08-11 09:26:11,431 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:26:11,431 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:26:11,431 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:26:11,432 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:11,432 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:26:11,434 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:11,434 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:26:11,434 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:26:11,440 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092611
+2025-08-11 09:26:12,965 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1LS2jpHEbmleROZn5NAvsrLsLUNaVx7CS
+2025-08-11 09:26:20,655 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:26:20,656 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:26:20,658 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:26:20,659 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:26:20,660 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:26:20,660 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:20,661 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:26:20,661 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:26:20,662 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:26:20,662 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:26:20,664 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:26:20,665 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:26:20,701 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:26:20,702 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:26:20,702 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:26:20,703 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:20,703 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:26:20,703 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:26:20,704 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:26:21,769 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:26:21,769 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:26:21,769 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:26:21,769 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:26:21,770 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:21,770 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:26:21,771 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:21,771 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:26:21,772 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:26:21,778 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092621
+2025-08-11 09:26:23,767 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1aRz8lxsLO3-jFTJ4ak8zy4sU_mEGuKqI
+2025-08-11 09:26:32,142 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:26:32,142 - invoice_extraction_bot - INFO - Processing email: INSURANCE
+2025-08-11 09:26:32,145 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:26:32,146 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:26:32,148 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:26:32,148 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:32,148 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:26:32,148 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:26:32,149 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:26:32,149 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:26:32,152 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:26:32,152 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:26:32,172 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:26:32,173 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:26:32,173 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:26:32,174 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:32,174 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:26:32,174 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:26:32,175 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:26:33,242 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:26:33,242 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:26:33,242 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:26:33,242 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:26:33,243 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:33,243 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:26:33,244 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:33,244 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:26:33,245 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:26:33,250 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092633
+2025-08-11 09:26:34,881 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1CEghqNBG78OfTBXr4GRwDm7sxz0OC189
+2025-08-11 09:26:43,609 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:26:43,610 - invoice_extraction_bot - INFO - Processing email: Fwd: INSURANCE
+2025-08-11 09:26:43,612 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:26:43,612 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:26:43,614 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:26:43,615 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:43,615 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:26:43,615 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:26:43,616 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:26:43,616 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:26:43,619 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:26:43,620 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:26:43,642 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:26:43,643 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:26:43,643 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:26:43,643 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:43,643 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:26:43,643 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:26:43,644 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:26:44,733 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+* If a field is not found, I've used 'N/A'
+* I've removed currency symbols and kept only numbers and decimal points
+* I've returned only valid JSON format
+* I've used double quotes for JSON keys and values
+2025-08-11 09:26:44,733 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:26:44,733 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:26:44,734 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:26:44,734 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:44,734 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:26:44,736 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:44,736 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:26:44,736 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:26:44,743 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092644
+2025-08-11 09:26:46,041 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1uUaUmLaQ9bxMrceLQms00e9CetwIqW9Z
+2025-08-11 09:26:54,373 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:26:54,374 - invoice_extraction_bot - INFO - Processing email: Fwd: INSURANCE
+2025-08-11 09:26:54,376 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:26:54,377 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:26:54,378 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:26:54,379 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:54,379 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:26:54,379 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:26:54,380 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:26:54,381 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:26:54,382 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:26:54,383 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:26:54,400 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:26:54,400 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:26:54,401 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:26:54,401 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:26:54,401 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:26:54,402 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:26:54,402 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:26:55,360 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+2025-08-11 09:26:55,361 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:26:55,361 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:26:55,361 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:26:55,362 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:55,362 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:26:55,363 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:26:55,363 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:26:55,363 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:26:55,370 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092655
+2025-08-11 09:26:56,730 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1wn_pw6S8vEGjj9pcgxGFBB0qIrEaGO80
+2025-08-11 09:27:05,409 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:27:05,410 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:27:05,412 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:27:05,413 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:27:05,414 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:27:05,414 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:05,415 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:27:05,415 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:27:05,416 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:27:05,416 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:27:05,419 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:27:05,419 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:27:05,438 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:27:05,439 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:27:05,439 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:27:05,439 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:05,440 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:27:05,440 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:27:05,440 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:27:06,970 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. I've kept only numbers and decimal points for numeric values.
+4. I've returned only a valid JSON object.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:27:06,971 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:27:06,971 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:27:06,972 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:27:06,972 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:06,972 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:27:06,973 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:06,973 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:27:06,974 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:27:06,979 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092706
+2025-08-11 09:27:08,364 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1XJRQvCSO3QpslpDv-6vUUCPCe1kM2Ga9
+2025-08-11 09:27:16,366 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:27:16,367 - invoice_extraction_bot - INFO - Processing email: Fwd: INSURANCE
+2025-08-11 09:27:16,371 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:27:16,371 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:27:16,373 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:27:16,374 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:16,374 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:27:16,374 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:27:16,375 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:27:16,375 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:27:16,378 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:27:16,379 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:27:16,398 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:27:16,399 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:27:16,399 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:27:16,399 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:16,400 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:27:16,400 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:27:16,400 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:27:17,899 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:27:17,899 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:27:17,899 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:27:17,900 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:27:17,900 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:17,901 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:27:17,902 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:17,902 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:27:17,902 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:27:17,909 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092717
+2025-08-11 09:27:19,628 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1G1L4cR4NC6_yfT6q1KAHNJksgJafLAY7
+2025-08-11 09:27:27,535 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:27:27,535 - invoice_extraction_bot - INFO - Processing email: Fwd: insurance 2
+2025-08-11 09:27:27,538 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:27:27,538 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:27:27,540 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:27:27,540 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:27,540 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:27:27,541 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:27:27,541 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:27:27,542 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:27:27,545 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:27:27,546 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:27:27,583 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:27:27,584 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:27:27,585 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:27:27,585 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:27,585 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:27:27,585 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:27:27,586 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:27:28,637 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON object.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:27:28,637 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:27:28,638 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:27:28,638 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:27:28,638 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:28,638 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:27:28,640 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:28,640 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:27:28,640 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:27:28,646 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092728
+2025-08-11 09:27:30,014 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1QeuOXb2vQuOlfcLVwkEtiaCoiqZTqhgC
+2025-08-11 09:27:40,632 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:27:40,633 - invoice_extraction_bot - INFO - Processing email: Fwdjehdhsjaja: insurance 2
+2025-08-11 09:27:40,635 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:27:40,635 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:27:40,637 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:27:40,637 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:40,639 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:27:40,640 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:27:40,641 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:27:40,641 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:27:40,643 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:27:40,643 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:27:40,663 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:27:40,664 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:27:40,664 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:27:40,664 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:40,664 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:27:40,664 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:27:40,665 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:27:41,752 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:27:41,753 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:27:41,754 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:27:41,754 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:27:41,755 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:41,755 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:27:41,757 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:41,757 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:27:41,757 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:27:41,765 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092741
+2025-08-11 09:27:43,370 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1DkI0KeqTM4sN-1iUOBuAo834GeVUCgQA
+2025-08-11 09:27:51,825 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:27:51,826 - invoice_extraction_bot - INFO - Processing email: Fwd: Fwdjehdhsjaja: insurance 2
+2025-08-11 09:27:51,828 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:27:51,829 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:27:51,830 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:27:51,831 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:51,831 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:27:51,831 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:27:51,832 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:27:51,832 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:27:51,835 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:27:51,835 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:27:51,853 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:27:51,853 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:27:51,853 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:27:51,854 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:27:51,854 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:27:51,854 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:27:51,854 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:27:53,118 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only valid JSON format.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:27:53,118 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:27:53,119 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:27:53,119 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:27:53,119 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:53,120 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:27:53,122 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:27:53,122 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:27:53,122 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:27:53,129 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092753
+2025-08-11 09:27:54,853 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1NTiwrr2g85o5_L1K-Ya3cW8eI4nMroPu
+2025-08-11 09:28:03,674 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:28:03,675 - invoice_extraction_bot - INFO - Processing email: Fwd: INSURANCE
+2025-08-11 09:28:03,678 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:28:03,678 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:28:03,679 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:28:03,680 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:28:03,680 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:28:03,680 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:28:03,681 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:28:03,681 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:28:03,683 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:28:03,683 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:28:03,699 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:28:03,700 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:28:03,700 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:28:03,700 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:28:03,701 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:28:03,701 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:28:03,701 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:28:05,079 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON format.
+5. I've used double quotes for JSON keys and values.
+2025-08-11 09:28:05,079 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:28:05,080 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:28:05,080 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:28:05,080 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:28:05,080 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:28:05,082 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:28:05,082 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:28:05,082 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:28:05,088 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092805
+2025-08-11 09:28:06,835 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1AwXPV0FjN4-JwpxKINiKM6gxBDmO4VHq
+2025-08-11 09:28:16,188 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:28:16,189 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance Policy Document
+2025-08-11 09:28:16,191 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:28:16,192 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:28:16,193 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:28:16,193 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:28:16,194 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:28:16,194 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:28:16,195 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:28:16,195 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:28:16,198 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:28:16,200 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:28:16,225 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:28:16,225 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:28:16,226 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:28:16,226 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:28:16,226 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:28:16,226 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:28:16,226 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:28:18,513 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've used 'N/A' for fields that were not applicable or found in the text. I've also removed currency symbols and formatted numeric values as per the rules provided.
+2025-08-11 09:28:18,514 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:28:18,514 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:28:18,514 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:28:18,515 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:28:18,515 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:28:18,516 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:28:18,517 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:28:18,517 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:28:18,524 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092818
+2025-08-11 09:28:20,596 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1EQscI8hm37Qvf4dHbeJyZDC1sXC_K4KZ
+2025-08-11 09:28:28,683 - invoice_extraction_bot - DEBUG - Skipping non-insurance email: Security alert
+2025-08-11 09:28:29,087 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:28:29,089 - invoice_extraction_bot - INFO - Processing email: Fwd: Fwdjehdhsjaja: insurance 2
+2025-08-11 09:28:29,092 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:28:29,093 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:28:29,095 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:28:29,095 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:28:29,095 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:28:29,096 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:28:29,096 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:28:29,097 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:28:29,099 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:28:29,099 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:28:29,115 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:28:29,116 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:28:29,116 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:28:29,117 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:28:29,117 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:28:29,117 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:28:29,118 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:28:29,980 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've used 'N/A' for fields that were not applicable or found in the text, and removed currency symbols and formatted numeric values according to the rules provided.
+2025-08-11 09:28:29,980 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:28:29,980 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:28:29,981 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:28:29,981 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:28:29,982 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:28:29,983 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:28:29,983 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:28:29,983 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:28:29,989 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092829
+2025-08-11 09:28:31,256 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1GGBOhlH_cNCaICBM4ZYjckO2JPp8wK28
+2025-08-11 09:28:39,720 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:28:39,720 - invoice_extraction_bot - INFO - Processing email: Insurance
+2025-08-11 09:28:39,722 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:28:39,722 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:28:39,724 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:28:39,724 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 09:28:39,724 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:28:39,724 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:28:39,725 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 09:28:39,725 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:28:39,727 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:28:39,727 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:28:39,728 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 09:28:39,728 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 09:28:39,728 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 09:28:40,506 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 09:28:40,507 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 09:29:00,217 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 09:29:00,217 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 09:29:00,218 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 09:29:00,224 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 09:29:00,225 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 09:29:00,225 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 09:29:00,225 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:29:02,629 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+  "Invoice no.": "1001329",
+  "Description": "Office Chair",
+  "Quantity": "2",
+  "Date": "5/4/2023",
+  "Unit price": "1100.00",
+  "Amount": "2200.00",
+  "Total": "2200.00",
+  "Email": "Santoshvarma0988@gmail.com",
+  "Phone number": "9999999999",
+  "Address": "Mumbai, India"
+}
+
+Note that I removed the currency symbols, kept only numbers and decimal points for numeric values, and used double quotes for JSON keys and values. I also used 'N/A' for fields that were not found.
+2025-08-11 09:29:02,629 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:29:02,629 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:29:02,630 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:29:02,630 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:29:02,630 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:29:02,632 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:29:02,632 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:29:02,632 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:29:02,639 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092902
+2025-08-11 09:29:03,968 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1SWDrPLs9yt1kKVB6dhbCS_9ye87rrY3x
+2025-08-11 09:29:12,488 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:29:12,489 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-11 09:29:12,490 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:29:12,491 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:29:12,492 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:29:12,493 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 09:29:12,493 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:29:12,493 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:29:12,494 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 09:29:12,494 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:29:12,496 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:29:12,496 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:29:12,497 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 09:29:12,497 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 09:29:12,497 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 09:29:13,115 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 09:29:13,115 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 09:29:31,128 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 09:29:31,129 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 09:29:31,129 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 09:29:31,135 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 09:29:31,135 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 09:29:31,135 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 09:29:31,136 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:29:32,163 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+    "Invoice no.": "1001329",
+    "Description": "Office Chair",
+    "Quantity": "2",
+    "Date": "5/4/2023",
+    "Unit price": "1100.00",
+    "Amount": "2200.00",
+    "Total": "2200.00",
+    "Email": "Santoshvarma0988@gmail.com",
+    "Phone number": "9999999999",
+    "Address": "Mumbai, India"
+}
+2025-08-11 09:29:32,164 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:29:32,164 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:29:32,164 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:29:32,165 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:29:32,165 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:29:32,166 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:29:32,166 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:29:32,167 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:29:32,173 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_092932
+2025-08-11 09:29:33,661 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1RL_Xa1TzqkH1wN15mf4SGeXsNn4svJEI
+2025-08-11 09:29:41,130 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:29:41,130 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-11 09:29:41,132 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:29:41,133 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:29:41,134 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:29:41,135 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 09:29:41,135 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:29:41,136 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:29:41,136 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 09:29:41,137 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:29:41,138 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:29:41,138 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:29:41,139 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 09:29:41,139 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 09:29:41,140 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 09:29:41,807 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 09:29:41,808 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 09:29:59,453 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 09:29:59,453 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 09:29:59,454 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 09:29:59,459 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 09:29:59,459 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 09:29:59,459 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 09:29:59,459 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:30:00,489 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+    "Invoice no.": "1001329",
+    "Description": "Office Chair",
+    "Quantity": "2",
+    "Date": "5/4/2023",
+    "Unit price": "1100.00",
+    "Amount": "2200.00",
+    "Total": "2200.00",
+    "Email": "Santoshvarma0988@gmail.com",
+    "Phone number": "9999999999",
+    "Address": "Mumbai, India"
+}
+
+Note that I removed the currency symbols, kept only numbers and decimal points for numeric values, and used double quotes for JSON keys and values. I also used 'N/A' for fields that were not found.
+2025-08-11 09:30:00,489 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:30:00,489 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:30:00,490 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:30:00,490 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:30:00,490 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:30:00,491 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:30:00,492 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:30:00,492 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:30:00,502 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_093000
+2025-08-11 09:30:01,823 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1ge4jpC1sCFyxAieOj-k56633UOLuZINd
+2025-08-11 09:30:09,648 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:30:09,649 - invoice_extraction_bot - INFO - Processing email: INSURANCE
+2025-08-11 09:30:09,650 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:30:09,651 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:30:09,653 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:30:09,653 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 09:30:09,653 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:30:09,653 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:30:09,654 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 09:30:09,654 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:30:09,656 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:30:09,656 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:30:09,656 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 09:30:09,657 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 09:30:09,657 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 09:30:10,271 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 09:30:10,271 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 09:30:28,069 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 09:30:28,069 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 09:30:28,070 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 09:30:28,075 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 09:30:28,075 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 09:30:28,075 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 09:30:28,076 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:30:29,268 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+  "Invoice no.": "1001329",
+  "Description": "Office Chair",
+  "Quantity": "2",
+  "Date": "5/4/2023",
+  "Unit price": "1100.00",
+  "Amount": "2200.00",
+  "Total": "2200.00",
+  "Email": "Santoshvarma0988@gmail.com",
+  "Phone number": "9999999999",
+  "Address": "Mumbai, India"
+}
+
+Note that I followed the rules you provided:
+
+1. If a field was not found, I used 'N/A'.
+2. I removed the currency symbols ($).
+3. For numeric values, I kept only numbers and decimal points.
+4. I returned only valid JSON format.
+5. I used double quotes for JSON keys and values.
+2025-08-11 09:30:29,268 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:30:29,269 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:30:29,269 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:30:29,269 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:30:29,270 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:30:29,272 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:30:29,272 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:30:29,272 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:30:29,283 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_093029
+2025-08-11 09:30:30,604 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1Wey4HFGE-Gfm83TYXZJgG3d5YTfTvWK4
+2025-08-11 09:30:38,070 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:30:38,071 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance Policy Document
+2025-08-11 09:30:38,073 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:30:38,073 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:30:38,075 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:30:38,075 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:30:38,075 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:30:38,075 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:30:38,076 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:30:38,076 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:30:38,079 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:30:38,079 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:30:38,099 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:30:38,099 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:30:38,100 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:30:38,100 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:30:38,100 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:30:38,101 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:30:38,101 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:30:39,304 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. I've kept only numbers and decimal points for numeric values.
+4. I've returned only a valid JSON object.
+5. I've used double quotes for JSON keys and values.
+2025-08-11 09:30:39,304 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:30:39,304 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:30:39,305 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:30:39,305 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:30:39,305 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:30:39,306 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:30:39,307 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:30:39,307 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:30:39,313 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_093039
+2025-08-11 09:30:40,771 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1Xce-7VGF89ASXIiB6aWgK210iK2Yx2ZE
+2025-08-11 09:30:48,315 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:30:48,315 - invoice_extraction_bot - INFO - Processing email: INSURANCE Policy
+2025-08-11 09:30:48,318 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:30:48,318 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:30:48,320 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:30:48,321 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:30:48,321 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:30:48,321 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:30:48,322 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 09:30:48,322 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:30:48,325 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:30:48,325 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:30:48,347 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 09:30:48,348 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 09:30:48,348 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 09:30:48,348 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 09:30:48,349 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 09:30:48,349 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 09:30:48,349 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:30:49,652 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON object.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:30:49,653 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:30:49,653 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:30:49,654 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:30:49,654 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:30:49,654 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:30:49,656 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 09:30:49,656 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:30:49,656 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:30:49,663 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_093049
+2025-08-11 09:30:51,128 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1qnCZ9ByJw9z2AEXCiLFRc5ilavLGByxo
+2025-08-11 09:30:58,919 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:30:58,920 - invoice_extraction_bot - INFO - Processing email: Insurance
+2025-08-11 09:30:58,961 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:30:58,962 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:30:58,964 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:30:58,964 - invoice_extraction_bot - INFO - Processing file: INSURANCE CLAIM FORM.pdf
+2025-08-11 09:30:58,964 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:30:58,965 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:30:58,965 - invoice_extraction_bot - INFO - PDF file size: 61109 bytes
+2025-08-11 09:30:58,965 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:30:58,968 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:30:58,969 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:30:58,986 - invoice_extraction_bot - INFO - Extracted 272 characters from page 1
+2025-08-11 09:30:58,987 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 273
+2025-08-11 09:30:58,988 - invoice_extraction_bot - DEBUG - Extracted text preview: Claim Number: CLM-2024-005 
+Date of Incident: 2024-07-25 
+Claimant: Jennifer Davis 
+Policy Number: POL-2024-003 
+Incident Description: Rear-end collision at intersection 
+Estimated Damage: $3200 
+Vehi...
+2025-08-11 09:30:58,988 - invoice_extraction_bot - INFO - Extracted 273 characters of text from INSURANCE CLAIM FORM.pdf
+2025-08-11 09:30:58,988 - invoice_extraction_bot - DEBUG - Raw text preview: Claim Number: CLM-2024-005 
+Date of Incident: 2024-07-25 
+Claimant: Jennifer Davis 
+Policy Number: POL-2024-003 
+Incident Description: Rear-end collision at intersection 
+Estimated Damage: $3200 
+Vehicle Make/Model: 2021 Toyota Camry 
+Police Report Number: PR-2024-1234 
+ 
+...
+2025-08-11 09:30:58,988 - invoice_extraction_bot - INFO - Extracting data from 273 characters of text
+2025-08-11 09:30:58,988 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:31:00,499 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "N/A",
+  "Description": "Rear-end collision at intersection",
+  "Quantity": "N/A",
+  "Date": "2024-07-25",
+  "Unit price": "N/A",
+  "Amount": "3200",
+  "Total": "3200",
+  "Email": "N/A",
+  "Phone number": "N/A",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed any currency symbols ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned ONLY valid JSON format.
+5. I've used double quotes for JSON keys and values.
+2025-08-11 09:31:00,499 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:31:00,508 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:31:00,509 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:31:00,509 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'N/A', 'Description': 'Rear-end collision at intersection', 'Quantity': 'N/A', 'Date': '2024-07-25', 'Unit price': 'N/A', 'Amount': '3200', 'Total': '3200', 'Email': 'N/A', 'Phone number': 'N/A', 'Address': 'N/A'}
+2025-08-11 09:31:00,509 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:31:00,512 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'N/A', 'Description': 'Rear-end collision at intersection', 'Quantity': 'N/A', 'Date': '2024-07-25', 'Unit price': 'N/A', 'Amount': '3200', 'Total': '3200', 'Email': 'N/A', 'Phone number': 'N/A', 'Address': 'N/A'}
+2025-08-11 09:31:00,512 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:31:00,512 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:31:00,519 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_093100
+2025-08-11 09:31:01,931 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1rq7mynBCBdlsCCDLUlrk6obT7wwqa8mq
+2025-08-11 09:31:10,259 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:31:10,260 - invoice_extraction_bot - INFO - Processing email: Insurance
+2025-08-11 09:31:10,263 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:31:10,263 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:31:10,265 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:31:10,265 - invoice_extraction_bot - INFO - Processing file: INSURANCE CLAIM FORM.pdf
+2025-08-11 09:31:10,265 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:31:10,265 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:31:10,266 - invoice_extraction_bot - INFO - PDF file size: 61109 bytes
+2025-08-11 09:31:10,266 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:31:10,268 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:31:10,268 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:31:10,281 - invoice_extraction_bot - INFO - Extracted 272 characters from page 1
+2025-08-11 09:31:10,282 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 273
+2025-08-11 09:31:10,282 - invoice_extraction_bot - DEBUG - Extracted text preview: Claim Number: CLM-2024-005 
+Date of Incident: 2024-07-25 
+Claimant: Jennifer Davis 
+Policy Number: POL-2024-003 
+Incident Description: Rear-end collision at intersection 
+Estimated Damage: $3200 
+Vehi...
+2025-08-11 09:31:10,282 - invoice_extraction_bot - INFO - Extracted 273 characters of text from INSURANCE CLAIM FORM.pdf
+2025-08-11 09:31:10,283 - invoice_extraction_bot - DEBUG - Raw text preview: Claim Number: CLM-2024-005 
+Date of Incident: 2024-07-25 
+Claimant: Jennifer Davis 
+Policy Number: POL-2024-003 
+Incident Description: Rear-end collision at intersection 
+Estimated Damage: $3200 
+Vehicle Make/Model: 2021 Toyota Camry 
+Police Report Number: PR-2024-1234 
+ 
+...
+2025-08-11 09:31:10,283 - invoice_extraction_bot - INFO - Extracting data from 273 characters of text
+2025-08-11 09:31:10,283 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:31:11,247 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "N/A",
+  "Description": "Rear-end collision at intersection",
+  "Quantity": "N/A",
+  "Date": "2024-07-25",
+  "Unit price": "N/A",
+  "Amount": "3200",
+  "Total": "3200",
+  "Email": "N/A",
+  "Phone number": "N/A",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. I've kept only numbers and decimal points for numeric values.
+4. I've returned only a valid JSON object.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 09:31:11,247 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:31:11,249 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:31:11,250 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:31:11,250 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'N/A', 'Description': 'Rear-end collision at intersection', 'Quantity': 'N/A', 'Date': '2024-07-25', 'Unit price': 'N/A', 'Amount': '3200', 'Total': '3200', 'Email': 'N/A', 'Phone number': 'N/A', 'Address': 'N/A'}
+2025-08-11 09:31:11,250 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:31:11,252 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'N/A', 'Description': 'Rear-end collision at intersection', 'Quantity': 'N/A', 'Date': '2024-07-25', 'Unit price': 'N/A', 'Amount': '3200', 'Total': '3200', 'Email': 'N/A', 'Phone number': 'N/A', 'Address': 'N/A'}
+2025-08-11 09:31:11,252 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:31:11,253 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:31:11,259 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_093111
+2025-08-11 09:31:12,821 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/13vcr3CM3A6Ta73N8PwgN6nV_1CjUpvgU
+2025-08-11 09:31:20,328 - invoice_extraction_bot - INFO - Processed 28 insurance emails
+2025-08-11 09:38:36,787 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:38:47,092 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-11 09:38:48,888 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-11 09:39:49,218 - invoice_extraction_bot - INFO - Normal check: only looking for unread emails
+2025-08-11 09:39:49,219 - invoice_extraction_bot - INFO - Found 0 emails to check
+2025-08-11 09:39:49,219 - invoice_extraction_bot - INFO - Processed 0 insurance emails
+2025-08-11 09:40:34,375 - invoice_extraction_bot - INFO - Normal check: only looking for unread emails
+2025-08-11 09:40:34,376 - invoice_extraction_bot - INFO - Found 0 emails to check
+2025-08-11 09:40:34,376 - invoice_extraction_bot - INFO - Processed 0 insurance emails
+2025-08-11 09:41:39,490 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:41:50,862 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-11 09:41:52,583 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-11 09:41:59,964 - invoice_extraction_bot - INFO - Normal check: only looking for unread emails
+2025-08-11 09:41:59,965 - invoice_extraction_bot - INFO - Found 2 emails to check
+2025-08-11 09:42:00,680 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:42:00,681 - invoice_extraction_bot - INFO - Processing email: Fwd: INSURANCE
+2025-08-11 09:42:00,684 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:42:00,684 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:42:00,687 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:42:00,688 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 09:42:00,688 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:42:00,689 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:42:00,690 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 09:42:00,690 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:42:00,693 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:42:00,694 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:42:00,695 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 09:42:00,696 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 09:42:00,697 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 09:42:01,382 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 09:42:01,383 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 09:42:21,318 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 09:42:21,319 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 09:42:21,319 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 09:42:21,327 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 09:42:21,327 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 09:42:21,327 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 09:42:21,328 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:42:22,438 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+    "Invoice no.": "1001329",
+    "Description": "Office Chair",
+    "Quantity": "2",
+    "Date": "5/4/2023",
+    "Unit price": "1100.00",
+    "Amount": "2200.00",
+    "Total": "2200.00",
+    "Email": "Santoshvarma0988@gmail.com",
+    "Phone number": "9999999999",
+    "Address": "Mumbai, India"
+}
+2025-08-11 09:42:22,439 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:42:22,439 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:42:22,440 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:42:22,440 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:42:22,440 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:42:22,443 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:42:22,443 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:42:22,443 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:42:22,450 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_094222
+2025-08-11 09:42:24,073 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1kdmRgAce7t1qdswMZY06gRVUDgxBq6xD
+2025-08-11 09:42:31,810 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:42:31,811 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-11 09:42:31,813 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:42:31,814 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:42:31,816 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:42:31,816 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 09:42:31,816 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:42:31,817 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:42:31,818 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 09:42:31,818 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:42:31,821 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:42:31,821 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:42:31,822 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 09:42:31,823 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 09:42:31,823 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 09:42:32,482 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 09:42:32,483 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 09:42:52,337 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 09:42:52,337 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 09:42:52,338 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 09:42:52,346 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 09:42:52,347 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 09:42:52,347 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 09:42:52,347 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:42:53,222 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+  "Invoice no.": "1001329",
+  "Description": "Office Chair",
+  "Quantity": "2",
+  "Date": "5/4/2023",
+  "Unit price": "1100.00",
+  "Amount": "2200.00",
+  "Total": "2200.00",
+  "Email": "Santoshvarma0988@gmail.com",
+  "Phone number": "9999999999",
+  "Address": "Mumbai, India"
+}
+2025-08-11 09:42:53,222 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:42:53,222 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:42:53,223 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:42:53,224 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:42:53,224 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:42:53,227 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:42:53,227 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:42:53,228 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:42:53,235 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_094253
+2025-08-11 09:42:54,608 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1ekQvt_vcRagGKsdm1BdXBQJhG21TamBo
+2025-08-11 09:43:01,598 - invoice_extraction_bot - INFO - Processed 2 insurance emails
+2025-08-11 09:45:34,782 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:46:08,487 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:46:42,315 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:48:57,156 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 09:49:45,172 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-11 09:49:47,021 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-11 09:50:06,927 - invoice_extraction_bot - INFO - Normal check: only looking for unread emails
+2025-08-11 09:50:06,928 - invoice_extraction_bot - INFO - Found 1 emails to check
+2025-08-11 09:50:07,456 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 09:50:07,461 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-11 09:50:07,492 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 09:50:07,497 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 09:50:07,501 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 09:50:07,502 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 09:50:07,502 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 09:50:07,503 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 09:50:07,503 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 09:50:07,504 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 09:50:07,507 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 09:50:07,507 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 09:50:07,508 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 09:50:07,508 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 09:50:07,508 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 09:50:08,167 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 09:50:08,167 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 09:50:27,455 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 09:50:27,455 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 09:50:27,456 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 09:50:27,464 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 09:50:27,465 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 09:50:27,465 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 09:50:27,465 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 09:50:30,718 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+    "Invoice no.": "1001329",
+    "Description": "Office Chair",
+    "Quantity": "2",
+    "Date": "5/4/2023",
+    "Unit price": "1100.00",
+    "Amount": "2200.00",
+    "Total": "2200.00",
+    "Email": "Santoshvarma0988@gmail.com",
+    "Phone number": "9999999999",
+    "Address": "Mumbai, India"
+}
+2025-08-11 09:50:30,719 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 09:50:30,720 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 09:50:30,720 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 09:50:30,720 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:50:30,720 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 09:50:30,722 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 09:50:30,722 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 09:50:30,723 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 09:50:30,730 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_095030
+2025-08-11 09:50:32,357 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1a8apvsfnvHQxeS9OTB_WYcfKdbqzD4ie
+2025-08-11 09:50:39,653 - invoice_extraction_bot - INFO - Processed 1 insurance emails
+2025-08-11 14:39:50,246 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 14:40:02,205 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-11 14:40:03,793 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-11 14:40:08,419 - invoice_extraction_bot - INFO - Normal check: only looking for unread emails
+2025-08-11 14:40:08,419 - invoice_extraction_bot - INFO - Found 3 emails to check
+2025-08-11 14:40:08,990 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 14:40:08,990 - invoice_extraction_bot - INFO - Processing email: Fwd: INSURANCE
+2025-08-11 14:40:08,993 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 14:40:08,994 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 14:40:08,999 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 14:40:08,999 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 14:40:08,999 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 14:40:09,000 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 14:40:09,000 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 14:40:09,000 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 14:40:09,001 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 14:40:09,002 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 14:40:09,002 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 14:40:09,003 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 14:40:09,003 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 14:40:09,613 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 14:40:09,613 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 14:40:30,195 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 14:40:30,195 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 14:40:30,195 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 14:40:30,202 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 14:40:30,202 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 14:40:30,203 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 14:40:30,203 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 14:40:31,423 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+  "Invoice no.": "1001329",
+  "Description": "Office Chair",
+  "Quantity": "2",
+  "Date": "5/4/2023",
+  "Unit price": "1100.00",
+  "Amount": "2200.00",
+  "Total": "2200.00",
+  "Email": "Santoshvarma0988@gmail.com",
+  "Phone number": "9999999999",
+  "Address": "Mumbai, India"
+}
+
+Note that I removed the currency symbols, kept only numbers and decimal points for numeric values, and used double quotes for JSON keys and values. I also used 'N/A' for fields that were not found.
+2025-08-11 14:40:31,424 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 14:40:31,424 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 14:40:31,425 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 14:40:31,425 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 14:40:31,425 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 14:40:31,429 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 14:40:31,429 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 14:40:31,430 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 14:40:31,837 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_144031
+2025-08-11 14:40:33,095 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/19qqIrRwJfE76JDL0ti6tXeIxuLBHJZNQ
+2025-08-11 14:40:40,772 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 14:40:40,773 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-11 14:40:40,775 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 14:40:40,775 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 14:40:40,777 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 14:40:40,777 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 14:40:40,778 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 14:40:40,778 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 14:40:40,779 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 14:40:40,779 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 14:40:40,780 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 14:40:40,780 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 14:40:40,781 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 14:40:40,782 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 14:40:40,782 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 14:40:41,222 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 14:40:41,223 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 14:41:01,035 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 14:41:01,035 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 14:41:01,035 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 14:41:01,042 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 14:41:01,042 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 14:41:01,042 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 14:41:01,043 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 14:41:01,720 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted data in the expected JSON format:
+
+{
+  "Invoice no.": "1001329",
+  "Description": "Office Chair",
+  "Quantity": "2",
+  "Date": "5/4/2023",
+  "Unit price": "1100.00",
+  "Amount": "2200.00",
+  "Total": "2200.00",
+  "Email": "Santoshvarma0988@gmail.com",
+  "Phone number": "9999999999",
+  "Address": "Mumbai, India"
+}
+
+Note that I removed the currency symbols, kept only numbers and decimal points for numeric values, and used double quotes for JSON keys and values. I also used 'N/A' for fields that were not found.
+2025-08-11 14:41:01,720 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 14:41:01,721 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 14:41:01,721 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 14:41:01,721 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 14:41:01,721 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 14:41:01,723 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 14:41:01,723 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 14:41:01,724 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 14:41:01,732 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_144101
+2025-08-11 14:41:03,245 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1CU_4XN7svqZzolaWwL3U-wEwdRdzZwIZ
+2025-08-11 14:41:11,464 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 14:41:11,465 - invoice_extraction_bot - INFO - Processing email: Fwd: INSURANCE
+2025-08-11 14:41:11,469 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 14:41:11,470 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 14:41:11,473 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 14:41:11,474 - invoice_extraction_bot - INFO - Processing file: INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 14:41:11,474 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 14:41:11,475 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 14:41:11,475 - invoice_extraction_bot - INFO - PDF file size: 68967 bytes
+2025-08-11 14:41:11,476 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 14:41:11,478 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 14:41:11,478 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 14:41:11,500 - invoice_extraction_bot - INFO - Extracted 397 characters from page 1
+2025-08-11 14:41:11,501 - invoice_extraction_bot - INFO - PDF text extraction completed. Total characters: 398
+2025-08-11 14:41:11,501 - invoice_extraction_bot - DEBUG - Extracted text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN1...
+2025-08-11 14:41:11,501 - invoice_extraction_bot - INFO - Extracted 398 characters of text from INSURANCE POLICY DOCUMENT.pdf
+2025-08-11 14:41:11,501 - invoice_extraction_bot - DEBUG - Raw text preview: INSURANCE POLICY DOCUMENT 
+ 
+Policy Number: POL-2024-011 
+Policyholder: Jessica Martinez 
+Coverage: Auto Insurance 
+Premium: $1350/year 
+Deductible: $500 
+Vehicle: 2022 Toyota Camry 
+VIN: 1HGBH41JXMN109186 
+Coverage Limits: $100,000/$300,000 
+Collision Coverage: Yes 
+Comprehensive Coverage: Yes 
+Eff...
+2025-08-11 14:41:11,501 - invoice_extraction_bot - INFO - Extracting data from 398 characters of text
+2025-08-11 14:41:11,502 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 14:41:12,177 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted JSON object:
+
+{
+  "Invoice no.": "POL-2024-011",
+  "Description": "Auto Insurance",
+  "Quantity": "N/A",
+  "Date": "2024-08-04",
+  "Unit price": "1350",
+  "Amount": "1350",
+  "Total": "1350",
+  "Email": "N/A",
+  "Phone number": "(555) 123-4567",
+  "Address": "N/A"
+}
+
+Note that I've followed the rules you provided:
+
+1. If a field is not found, I've used 'N/A'.
+2. I've removed the currency symbol ($).
+3. For numeric values, I've kept only numbers and decimal points.
+4. I've returned only a valid JSON object.
+5. I've used double quotes for JSON keys and values.
+
+Let me know if you have any further questions!
+2025-08-11 14:41:12,177 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 14:41:12,177 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 14:41:12,177 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 14:41:12,178 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 14:41:12,178 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 14:41:12,179 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': 'POL-2024-011', 'Description': 'Auto Insurance', 'Quantity': 'N/A', 'Date': '2024-08-04', 'Unit price': '1350', 'Amount': '1350', 'Total': '1350', 'Email': 'N/A', 'Phone number': '(555) 123-4567', 'Address': 'N/A'}
+2025-08-11 14:41:12,179 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 14:41:12,179 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 14:41:12,185 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_144112
+2025-08-11 14:41:13,503 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/152gukZX-v4lpibxXI1ALqTR2BUwNihJ5
+2025-08-11 14:41:20,320 - invoice_extraction_bot - INFO - Processed 3 insurance emails
+2025-08-11 14:43:37,796 - invoice_extraction_bot - INFO - Reset seen emails cache
+2025-08-11 14:45:39,565 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 14:46:12,052 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 15:36:55,542 - invoice_extraction_bot - INFO - Initialized Groq model.
+2025-08-11 15:37:21,694 - invoice_extraction_bot - INFO - Connecting to email server...
+2025-08-11 15:37:24,484 - invoice_extraction_bot - INFO - Successfully connected to email server
+2025-08-11 15:37:29,193 - invoice_extraction_bot - INFO - Normal check: only looking for unread emails
+2025-08-11 15:37:29,194 - invoice_extraction_bot - INFO - Found 1 emails to check
+2025-08-11 15:37:29,923 - invoice_extraction_bot - INFO - Found insurance email, processing...
+2025-08-11 15:37:29,923 - invoice_extraction_bot - INFO - Processing email: Fwd: Insurance
+2025-08-11 15:37:29,927 - invoice_extraction_bot - INFO - Found 1 invoice files to process
+2025-08-11 15:37:29,927 - invoice_extraction_bot - INFO - Processing invoice files...
+2025-08-11 15:37:29,930 - invoice_extraction_bot - INFO - Processing 1 files
+2025-08-11 15:37:29,930 - invoice_extraction_bot - INFO - Processing file: invoice_1001329.pdf
+2025-08-11 15:37:29,931 - invoice_extraction_bot - INFO - File type: application/pdf
+2025-08-11 15:37:29,931 - invoice_extraction_bot - INFO - Processing as PDF file
+2025-08-11 15:37:29,932 - invoice_extraction_bot - INFO - PDF file size: 24121 bytes
+2025-08-11 15:37:29,932 - invoice_extraction_bot - INFO - Starting PDF text extraction.
+2025-08-11 15:37:29,934 - invoice_extraction_bot - INFO - PDF has 1 pages
+2025-08-11 15:37:29,934 - invoice_extraction_bot - INFO - Processing page 1
+2025-08-11 15:37:29,935 - invoice_extraction_bot - INFO - No text found on page 1, will use OCR
+2025-08-11 15:37:29,935 - invoice_extraction_bot - INFO - No text extracted via direct method, proceeding to OCR
+2025-08-11 15:37:29,936 - invoice_extraction_bot - INFO - Starting OCR fallback for scanned PDF.
+2025-08-11 15:37:30,594 - invoice_extraction_bot - INFO - Converted PDF to 1 images
+2025-08-11 15:37:30,595 - invoice_extraction_bot - INFO - Running OCR on page 1
+2025-08-11 15:37:50,538 - invoice_extraction_bot - INFO - OCR extracted 242 characters from page 1
+2025-08-11 15:37:50,539 - invoice_extraction_bot - INFO - OCR extraction completed. Total characters: 243
+2025-08-11 15:37:50,539 - invoice_extraction_bot - DEBUG - OCR text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+...
+2025-08-11 15:37:50,545 - invoice_extraction_bot - INFO - Extracted 243 characters of text from invoice_1001329.pdf
+2025-08-11 15:37:50,546 - invoice_extraction_bot - DEBUG - Raw text preview: EXCELCULT.COM
+Bill To
+Ms.Santoshi
+ExcelCult
+Mumbai , India
+India
+Santoshvarma0988@gmail.com
+9999999999
+Invoice no
+1001329
+Date
+5/4/2023
+Description
+Quantity
+Unit price
+Amount
+Office Chair
+2
+S1,100.00
+S2,200.00
+Total
+S2,200.00
+System Generated
+...
+2025-08-11 15:37:50,546 - invoice_extraction_bot - INFO - Extracting data from 243 characters of text
+2025-08-11 15:37:50,546 - invoice_extraction_bot - INFO - Sending data to Groq API for extraction.
+2025-08-11 15:37:51,836 - invoice_extraction_bot - DEBUG - Groq API Response: Here is the extracted information in the expected JSON format:
+
+{
+    "Invoice no.": "1001329",
+    "Description": "Office Chair",
+    "Quantity": "2",
+    "Date": "5/4/2023",
+    "Unit price": "1100.00",
+    "Amount": "2200.00",
+    "Total": "2200.00",
+    "Email": "Santoshvarma0988@gmail.com",
+    "Phone number": "9999999999",
+    "Address": "Mumbai, India"
+}
+
+Note that I removed the currency symbols, kept only numbers and decimal points for numeric values, and used double quotes for JSON keys and values. I also used 'N/A' for fields that were not found.
+2025-08-11 15:37:51,838 - invoice_extraction_bot - INFO - Successfully parsed JSON response
+2025-08-11 15:37:51,838 - invoice_extraction_bot - INFO - Parsing extracted JSON data
+2025-08-11 15:37:51,839 - invoice_extraction_bot - INFO - Successfully parsed data: ['Invoice no.', 'Description', 'Quantity', 'Date', 'Unit price', 'Amount', 'Total', 'Email', 'Phone number', 'Address']
+2025-08-11 15:37:51,839 - invoice_extraction_bot - DEBUG - Parsed Data Dict: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 15:37:51,839 - invoice_extraction_bot - INFO - Processing single line item
+2025-08-11 15:37:51,841 - invoice_extraction_bot - DEBUG - Added row: {'Invoice no.': '1001329', 'Description': 'Office Chair', 'Quantity': '2', 'Date': '5/4/2023', 'Unit price': '1100.00', 'Amount': '2200.00', 'Total': '2200.00', 'Email': 'Santoshvarma0988@gmail.com', 'Phone number': '9999999999', 'Address': 'Mumbai, India'}
+2025-08-11 15:37:51,841 - invoice_extraction_bot - INFO - Data extraction process completed. Processed 1 records.
+2025-08-11 15:37:51,842 - invoice_extraction_bot - INFO - Successfully extracted data from 1 invoice items
+2025-08-11 15:37:52,622 - invoice_extraction_bot - INFO - Creating Google Drive folder: Invoice_Processing_20250811_153752
+2025-08-11 15:37:53,958 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1Li9vUSh0E0uH0L7ueSFRvzC9TehzqRVP
+2025-08-11 15:38:02,270 - invoice_extraction_bot - INFO - Successfully processed email and saved to: https://drive.google.com/drive/folders/1Li9vUSh0E0uH0L7ueSFRvzC9TehzqRVP
+2025-08-11 15:38:02,271 - invoice_extraction_bot - INFO - Processed 1 insurance emails
