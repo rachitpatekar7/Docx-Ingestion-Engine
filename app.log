@@ -2939,3 +2939,4 @@ Note that I removed the currency symbols, kept only numbers and decimal points f
 2025-08-11 15:37:53,958 - invoice_extraction_bot - INFO - Created folder: https://drive.google.com/drive/folders/1Li9vUSh0E0uH0L7ueSFRvzC9TehzqRVP
 2025-08-11 15:38:02,270 - invoice_extraction_bot - INFO - Successfully processed email and saved to: https://drive.google.com/drive/folders/1Li9vUSh0E0uH0L7ueSFRvzC9TehzqRVP
 2025-08-11 15:38:02,271 - invoice_extraction_bot - INFO - Processed 1 insurance emails
+2025-08-12 10:47:41,800 - invoice_extraction_bot - INFO - Initialized Groq model.
